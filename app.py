@@ -1,19 +1,19 @@
-from flask import Flask, jsonify
-from multiprocessing import Value
-app = Flask(__name__)
+import app as st
+import numpy as np
+import pandas as pd
 
-counter = Value('i', 0)
-app = Flask(__name__)
 
-@app.route('/')
-def index():
-    with counter.get_lock():
-        counter.value += 1
-        out = counter.value
+df = pd.read_csv('season-1819_csv.csv')
+df.head()
+sl= st.slider('Row?', 0, df.index[-1], 25)
+st.title('Counters POG')
+if 'count' not in st.session_state:
+    st.session_state.count = 0
 
-    return jsonify(count=out)
+increment = st.button('Increment')
+if increment:
+    st.session_state.count += 1
 
-app.run()
+st.write('Count = ', st.session_state.count)
 
-if __name__ == '__main__':  
-    app.run()
+st.write(df.iloc[0:sl+1])
