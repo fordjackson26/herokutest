@@ -16,4 +16,4 @@ if increment:
 
 st.write('Count = ', st.session_state.count)
 
-st.write(df.iloc[0:sl+1])
+st.write(df.iloc[sl:sl+1])
