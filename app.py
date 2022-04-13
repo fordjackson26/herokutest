@@ -17,8 +17,9 @@ if increment:
 st.write('Count = ', st.session_state.count)
 
 st.write(df.iloc[sl:sl+1])
-
-comments = []
+file = open('comments.txt', 'r')
+comments = file.readlines()
+file.close()
 textfile = open("comments.txt", "w")
 comment = st.text_input('Input your comment:') 
 if comment:
