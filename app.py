@@ -28,7 +28,7 @@ textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
 if comment:
     comments.append(comment)
-    cur.execute("INSERT INTO comments VALUE ('%s')" % comment)
+    cur.execute("""INSERT INTO comments VALUE ('?')""", (comment,))
 
 st.write(comments)
 con.close()
