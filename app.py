@@ -20,7 +20,7 @@ st.write(df.iloc[sl:sl+1])
 file = open('comments.txt', 'r')
 comments = file.readlines()
 file.close()
-textfile = open("comments.txt", "w")
+textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
 if comment:
     comments.append(comment)
