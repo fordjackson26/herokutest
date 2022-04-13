@@ -17,3 +17,11 @@ if increment:
 st.write('Count = ', st.session_state.count)
 
 st.write(df.iloc[sl:sl+1])
+comments = []
+comment = st.text_input('Input your comment:') 
+if comment:
+    comments.append(comment)
+
+textfile = open("comments.txt", "w")
+for c in comments:
+    textfile.write(c + '\n')
