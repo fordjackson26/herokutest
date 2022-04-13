@@ -1,7 +1,11 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import sqlite3
 
+conn = sqlite3.connect('test.db')
+cur = con.cursor()
+cur.execute('''CREATE TABLE IF NOT EXISTS comments (com)''')
 
 df = pd.read_csv('season-1819_csv.csv')
 df.head()
@@ -18,13 +22,12 @@ st.write('Count = ', st.session_state.count)
 
 st.write(df.iloc[sl:sl+1])
 file = open('comments.txt', 'r')
-comments = file.readlines()
+comments = cur.execute('SELECT * FROM comments')
 file.close()
 textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
 if comment:
     comments.append(comment)
-    textfile.write(comment + '\n')
+    cur.execute("INSERT INTO comments VALUE ('%s')")
 
 st.write(comments)
-#useless comment
