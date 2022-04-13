@@ -28,6 +28,6 @@ textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
 if comment:
     comments.append(comment)
-    cur.execute("""INSERT INTO comments VALUE ('?')""", (comment,))
+    cur.execute("""INSERT INTO comments VALUES (?)""", (comment,))
 
 st.write(comments)
