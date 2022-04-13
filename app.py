@@ -29,5 +29,6 @@ comment = st.text_input('Input your comment:')
 if comment:
     comments.append(comment)
     cur.execute("""INSERT INTO comments VALUES (?)""", (comment,))
+    con.commit()
 
 st.write(comments)
