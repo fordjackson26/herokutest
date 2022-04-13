@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import sqlite3
 
-conn = sqlite3.connect('test.db')
+con = sqlite3.connect('test.db')
 cur = con.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS comments (com)''')
 
@@ -28,6 +28,7 @@ textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
 if comment:
     comments.append(comment)
-    cur.execute("INSERT INTO comments VALUE ('%s')")
+    cur.execute("INSERT INTO comments VALUE ('%s')" % comment)
 
 st.write(comments)
+con.close()
