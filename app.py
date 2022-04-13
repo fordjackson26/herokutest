@@ -31,4 +31,3 @@ if comment:
     cur.execute("""INSERT INTO comments VALUE ('?')""", (comment,))
 
 st.write(comments)
-con.close()
