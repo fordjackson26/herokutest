@@ -22,7 +22,7 @@ st.write('Count = ', st.session_state.count)
 
 st.write(df.iloc[sl:sl+1])
 file = open('comments.txt', 'r')
-comments = cur.execute('SELECT * FROM comments')
+comments = cur.execute('SELECT * FROM comments').fetchall()
 file.close()
 textfile = open("comments.txt", "a")
 comment = st.text_input('Input your comment:') 
